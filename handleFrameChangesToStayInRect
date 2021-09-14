@@ -1,0 +1,34 @@
+  func handleFrameChangesToStayInRect(_ newRect: inout CGRect) {
+        let maxY = bounds.maxY
+        let maxX = bounds.maxX
+        
+        let width = newRect.width
+        let height = newRect.height
+        
+        let widthBarrier = maxX - width
+        let heightBarrier = maxY - height
+        
+        if newRect.width < maxX {
+            newRect.size.width = maxX
+        }
+        
+        if newRect.height < maxY {
+            newRect.size.height = maxY
+        }
+        
+        if newRect.origin.x < widthBarrier {
+            newRect.origin.x = widthBarrier
+        }
+        
+        if newRect.origin.y < heightBarrier {
+            newRect.origin.y = heightBarrier
+        }
+        
+        if newRect.origin.x > 0 {
+            newRect.origin.x = 0
+        }
+        
+        if newRect.origin.y > 0 {
+            newRect.origin.y = 0
+        }
+    }
